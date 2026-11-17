@@ -1,0 +1,290 @@
+/* 1. Colour variables, fonts and spacing scale, plus base element styles */
+:root {
+  --color-bg: #F3EBDD;
+  --color-card: #FAF7F0;
+  --color-sheet: #FFFFFF;
+  --color-text: #2C3346;
+  --color-accent: #1B2A4A;
+  --color-border: #D6CCBA;
+  --color-white: #FFFFFF;
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", Arial, sans-serif;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-edge: 24px;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  line-height: 1.25;
+  margin: 0 0 var(--space-sm);
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2rem; margin-top: var(--space-xl); margin-bottom: var(--space-md); }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.1rem; }
+
+p {
+  margin: 0 0 var(--space-md);
+  max-width: 70ch;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+a:focus-visible,
+.button:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* 2. Page layout: sections and the centred container */
+section {
+  padding: 0 var(--space-edge);
+}
+
+#hero {
+  padding-top: var(--space-xl);
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* 3. Navigation bar (flexbox) */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-edge);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-name {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--color-text);
+}
+
+/* 4. Buttons and the row that holds them */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 var(--space-lg);
+  background: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  color: var(--color-white);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.button-outline {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+.button-outline:hover {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+/* 5. Hero section (#hero) */
+#hero .lead {
+  font-size: 1.25rem;
+}
+
+/* 6. Experience cards (grid of flex cards) */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-lg);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+}
+
+.card:hover {
+  border-color: var(--color-accent);
+}
+
+.card h3,
+.card p {
+  margin: 0;
+}
+
+/* 7. Paper resume (#resume), shown on a white sheet */
+.download-link {
+  margin-top: var(--space-lg);
+}
+
+#resume {
+  padding-bottom: var(--space-xl);
+}
+
+.sheet {
+  max-width: 780px;
+  margin: var(--space-lg) auto 0;
+  padding: var(--space-xl);
+  background: var(--color-sheet);
+  border: 1px solid var(--color-border);
+}
+
+.sheet h2 {
+  margin-top: 0;
+}
+
+.resume-contact {
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+}
+
+.resume-section {
+  margin-top: var(--space-lg);
+}
+
+.resume-section h3 {
+  margin-bottom: var(--space-sm);
+}
+
+.resume-item {
+  margin-bottom: var(--space-md);
+}
+
+.resume-item h4,
+.resume-item p {
+  margin: 0;
+}
+
+/* 8. Contact section (#contact) */
+#contact {
+  padding-bottom: var(--space-xl);
+}
+
+/* 9. Phones: one rule for screens narrower than 700px */
+@media (max-width: 699px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  #hero {
+    padding-top: var(--space-lg);
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .button-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sheet {
+    padding: var(--space-lg);
+  }
+}
+
+/* 10. Print: only the resume, on one black-and-white A4 page */
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #resume,
+  #resume * {
+    visibility: visible;
+  }
+
+  #resume {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    background: #FFFFFF;
+  }
+
+  .sheet {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: #FFFFFF;
+  }
+
+  body,
+  h1, h2, h3, h4, p {
+    color: #000000;
+    background: #FFFFFF;
+  }
+}
